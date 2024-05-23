@@ -1,0 +1,26 @@
+{
+  "name": "json-tackle",
+  "version": "1.0.0",
+  "description": "Json compare and so on.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yue19870813/json-tackle.git"
+  },
+  "author": "Yue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yue19870813/json-tackle/issues"
+  },
+  "homepage": "https://github.com/yue19870813/json-tackle#readme",
+  "devDependencies": {
+    "electron": "^30.0.6"
+  },
+  "dependencies": {
+    "fast-json-patch": "^3.1.1"
+  }
+}

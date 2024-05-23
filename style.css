@@ -1,0 +1,34 @@
+.drop-zone-container, .content-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.drop-zone, #content-left, #content-right {
+    flex: 1; /* 让它们占据父容器的相同比例 */
+    margin: 5px; /* 可选，为了美观添加的空白间距 */
+}
+
+/* 根据需要，可以添加更多样式来装饰drop-zone和content */
+.drop-zone {
+    border: 2px dashed #cccccc;
+    padding: 10px;
+    text-align: left; /* 使段落居中 */
+}
+
+/* 内容div的样式 */
+#content-left, #content-right {
+    border: 1px solid #cccccc; /* 可选，展示边界 */
+    padding: 10px;
+}
+
+.red-text {
+    background-color: red;
+}
+
+.yellow-text {
+    background-color: yellow;
+}
+
+.blue-text {
+    background-color: rgb(130, 196, 235);
+}
