@@ -5,4 +5,5 @@ contextBridge.exposeInMainWorld('electronAPI', {
   readFile: (path, flag) => ipcRenderer.send('read-file', path, flag),
   onUpdateJson: (callback) => ipcRenderer.on('update-json', (_event, data, flag) => callback(data, flag)),
   onCompareDiffs: (callback) => ipcRenderer.on('compare-diffs', (_event, diffs) => callback(diffs)),
+  onPrint: (callback) => ipcRenderer.on('print', (_event, args) => callback(args)),
 })

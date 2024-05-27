@@ -3,6 +3,15 @@ const path = require('node:path')
 const fs = require('fs');
 const compare  = require('fast-json-patch').compare;
 
+let argv = null;
+
+app.on('ready', () => {
+    console.log("---------------------");
+    console.log(process.argv);
+    argv = process.argv;
+    // 输出：['path/to/electron', 'path/to/main.js', 'arg1', 'arg2', 'arg3']
+});
+
 const createWindow = () => {
     let leftJson = null;
     let rightJson = null;
@@ -22,6 +31,10 @@ const createWindow = () => {
     )
 
     ipcMain.on('read-file', (event, path, flag) => {
+        readFile(path, flag);
+    })
+
+    function readFile(path, flag) {
         fs.readFile(path, 'utf8', (err, data) => {
             if (err) {
                 console.error(err);
@@ -31,7 +44,7 @@ const createWindow = () => {
                 compareHandle(data, flag);
             }
         });
-    })
+    }
 
     // 定义一个函数来替换路径指定的值
     function updateJsonValue(obj, path, newValue, style) {
@@ -91,7 +104,17 @@ const createWindow = () => {
         }
     }
 
-    mainWindow.loadFile('index.html')
+    mainWindow.loadFile('index.html').then(()=>{
+        mainWindow.webContents.send('print', argv);
+        let left = argv[2];
+        let right = argv[3];
+        if (left != null && left != "") {
+            readFile(left, "left")
+        }
+        if (right != null && right != "") {
+            readFile(right, "right")
+        }
+    });
 }
 
 app.whenReady().then(() => {

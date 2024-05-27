@@ -37,3 +37,8 @@ window.electronAPI.onCompareDiffs((diffs) => {
     document.getElementById('change-desc').innerHTML = '共有<span class="red-text">' + diffs.length + '</span>处不一致!';
     console.log(diffs);
 })
+
+window.electronAPI.onPrint((args) => {
+    console.log("####### onPrint #######");
+    console.log(args);
+})
