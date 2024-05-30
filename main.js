@@ -96,10 +96,16 @@ const createWindow = () => {
             });
             jsonRightString = JSON.stringify(rightJsonObj,null, 2);
             jsonLeftString = JSON.stringify(leftJsonObj,null, 2);
-            // console.log(jsonLeftString);
-            // console.log(jsonRightString);
-            mainWindow.webContents.send('update-json', jsonRightString, 'right');
-            mainWindow.webContents.send('update-json', jsonLeftString, 'left');
+            let resultLeft = jsonLeftString.replace(/"([^"]+)":\s*"<span class=([^>]+)>/g, (_, key, color) => {
+                return `"<span class=${color}>${key}</span>": "<span class=${color}>`;
+            });
+
+            let resultRight = jsonRightString.replace(/"([^"]+)":\s*"<span class=([^>]+)>/g, (_, key, color) => {
+                return `"<span class=${color}>${key}</span>": "<span class=${color}>`;
+            });
+            
+            mainWindow.webContents.send('update-json', resultRight, 'right');
+            mainWindow.webContents.send('update-json', resultLeft, 'left');
         }
     }
 
