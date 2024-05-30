@@ -39,7 +39,6 @@ const createWindow = () => {
             if (err) {
                 console.error(err);
             } else {
-                console.log(data);
                 mainWindow.webContents.send('update-json', data, flag);
                 compareHandle(data, flag);
             }
@@ -97,8 +96,8 @@ const createWindow = () => {
             });
             jsonRightString = JSON.stringify(rightJsonObj,null, 2);
             jsonLeftString = JSON.stringify(leftJsonObj,null, 2);
-            console.log(jsonLeftString);
-            console.log(jsonRightString);
+            // console.log(jsonLeftString);
+            // console.log(jsonRightString);
             mainWindow.webContents.send('update-json', jsonRightString, 'right');
             mainWindow.webContents.send('update-json', jsonLeftString, 'left');
         }

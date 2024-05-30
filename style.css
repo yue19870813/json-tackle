@@ -10,9 +10,12 @@
 
 /* 根据需要，可以添加更多样式来装饰drop-zone和content */
 .drop-zone {
+    flex: 1;
+    margin: 5px;
     border: 2px dashed #cccccc;
     padding: 10px;
-    text-align: left; /* 使段落居中 */
+    text-align: left;
+    overflow: auto;  /* 添加这一行 */
 }
 
 /* 内容div的样式 */
