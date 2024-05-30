@@ -34,6 +34,10 @@ window.electronAPI.onUpdateJson((data, flag) => {
 })
 
 window.electronAPI.onCompareDiffs((diffs) => {
+    if (diffs.length == 0) {
+        document.getElementById('change-desc').innerHTML = '两个文件完全相同!';
+        return;
+    }
     document.getElementById('change-desc').innerHTML = '共有<span class="red-text">' + diffs.length + '</span>处不一致!';
     console.log(diffs);
 })
