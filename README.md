@@ -18,7 +18,7 @@ npm start
 npm start --
 l[left]='D:\test\left.json'
 r[right]='D:\test\right.json'
-b[blacklist]='*type*|repository/type'
+b[blacklist]='*type*|/age'
 
 example:
-npm start -- left=/Users/yue/web/json-tackle/test/left.json right=/Users/yue/web/json-tackle/test/right.json b=*type*
+npm start -- left=/Users/yue/web/json-tackle/test/left.json right=/Users/yue/web/json-tackle/test/right.json blacklist="*type*|/age"
