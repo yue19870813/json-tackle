@@ -2,17 +2,15 @@ const { app, BrowserWindow, ipcMain } = require('electron/main')
 const path = require('node:path')
 const fs = require('fs');
 const compare  = require('fast-json-patch').compare;
+const cmd_line = require('./cmd_line/cmd_line');
 
 /** 公共的全局变量 */
-let argv = null;    // 命令行参数
-let left = null;    // 左侧json文件地址
-let right = null;   // 右侧json文件地址
+
 /** 公共的全局变量 */
 
 app.on('ready', () => {
-    console.log("---------------------");
     console.log(process.argv);
-    argv = process.argv;
+    cmd_line.init(process.argv);
     // ['path/to/electron', 'path/to/main.js', 'arg1', 'arg2', 'arg3']
 });
 
@@ -37,12 +35,6 @@ const createWindow = () => {
     ipcMain.on('read-file', (event, path, flag) => {
         readFile(path, flag);
     })
-
-    // 解析命令行参数
-    function parseCLineParam() {
-        left = argv[2];
-        right = argv[3];
-    }
 
     function readFile(path, flag) {
         fs.readFile(path, 'utf8', (err, data) => {
@@ -120,9 +112,9 @@ const createWindow = () => {
     }
 
     mainWindow.loadFile('index.html').then(()=>{
-        mainWindow.webContents.send('print', argv);
-        
-        parseCLineParam();
+        // mainWindow.webContents.send('print', argv);
+        let left = cmd_line.param.left;
+        let right = cmd_line.param.right;
         if (left != null && left != "") {
             readFile(left, "left")
         }
