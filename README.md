@@ -12,7 +12,10 @@ npm i --registry=https://mirrors.cloud.tencent.com/npm/
 ```
 // 打开应用：
 npm start
-
-// 打开应用并传递参数
-npm start -- "D:\test\left.json" "D:\test\right.json"
 ```
+
+## 命令行工具
+npm start --
+l[left]='D:\test\left.json'
+r[right]='D:\test\right.json'
+b[blacklist]='*Test*|repository/type'

@@ -24,6 +24,12 @@
     padding: 10px;
 }
 
+.top-right {
+    position: absolute;  /* 使用绝对定位 */
+    top: 0;  /* 从顶部开始 */
+    right: 0;  /* 从右边开始 */
+}
+
 .red-text {
     background-color: red;
 }

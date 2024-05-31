@@ -11,6 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/yue19870813/json-tackle.git"
   },
+  "type": "left",
   "author": "Yue",
   "license": "ISC",
   "bugs": {

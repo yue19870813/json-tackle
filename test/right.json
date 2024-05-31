@@ -10,7 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/yue19870813/json-tackle.git"
   },
-  "author": "Yue",
+  "type": "right",
+  "author": "Yue66",
   "age": 99,
   "license": "ISC",
   "bugs": {
