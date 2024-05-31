@@ -7,6 +7,9 @@ function initBlacklist(blacklistStr) {
 }
 
 function removeBlacklist(diffs) {
+    if (list == null) {
+        return diffs;
+    }
     list.forEach(pattern => {
         // 将通配符 "*" 替换为 ".*"，以创建一个正则表达式
         let regex = new RegExp(pattern.replace("*", ".*"));

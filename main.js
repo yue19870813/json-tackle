@@ -82,9 +82,9 @@ const createWindow = () => {
             let rightJsonObj = JSON.parse(rightJson);
             let leftJsonObj = JSON.parse(leftJson);
             let diffs = compare(leftJsonObj, rightJsonObj);
-            mainWindow.webContents.send('compare-diffs', diffs);
             diffs = blacklist.removeBlacklist(diffs);
             console.log(diffs);
+            mainWindow.webContents.send('compare-diffs', diffs);
             // 处理左侧json：将remove部分标记出来 | 处理右侧json：将replace和add部分标记出来
             let jsonLeftString = "";
             let jsonRightString = "";
