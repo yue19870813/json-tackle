@@ -3,6 +3,7 @@ const path = require('node:path')
 const fs = require('fs');
 const compare  = require('fast-json-patch').compare;
 const cmd_line = require('./cmd_line/cmd_line');
+const blacklist = require('./blacklist/blacklist');
 
 /** 公共的全局变量 */
 
@@ -11,6 +12,7 @@ const cmd_line = require('./cmd_line/cmd_line');
 app.on('ready', () => {
     console.log(process.argv);
     cmd_line.init(process.argv);
+    blacklist.initBlacklist(cmd_line.param.blacklist);
     // ['path/to/electron', 'path/to/main.js', 'arg1', 'arg2', 'arg3']
 });
 
@@ -81,6 +83,7 @@ const createWindow = () => {
             let leftJsonObj = JSON.parse(leftJson);
             let diffs = compare(leftJsonObj, rightJsonObj);
             mainWindow.webContents.send('compare-diffs', diffs);
+            diffs = blacklist.removeBlacklist(diffs);
             console.log(diffs);
             // 处理左侧json：将remove部分标记出来 | 处理右侧json：将replace和add部分标记出来
             let jsonLeftString = "";
