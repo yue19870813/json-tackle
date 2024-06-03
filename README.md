@@ -19,11 +19,11 @@ npm start
 npm start
 -- l[left]='D:\test\left.json'
 -- r[right]='D:\test\right.json'
--- b[blacklist]='*type*&/age'
+-- b[blacklist]='*type*#/age'
 
 example:
 Mac:
-npm start -- left=/Users/yue/web/json-tackle/test/left.json -- right=/Users/yue/web/json-tackle/test/right.json -- blacklist="*type*&/age"
+npm start -- left=/Users/yue/web/json-tackle/test/left.json -- right=/Users/yue/web/json-tackle/test/right.json -- blacklist="*type*#/age"
 
 Windows:
 npm start -- left=D:/workspace/fe/json-tackle/test/left_big.json -- right=D:/workspace/fe/json-tackle/test/right_big.json -- b="*Id"

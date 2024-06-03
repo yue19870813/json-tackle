@@ -3,7 +3,7 @@ let blacklist = {};
 let list = [];
 
 function initBlacklist(blacklistStr) {
-    list = blacklistStr?.split("&");
+    list = blacklistStr?.split("#");
 }
 
 function removeBlacklist(diffs) {
