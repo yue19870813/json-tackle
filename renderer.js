@@ -1,9 +1,8 @@
-// const setButton = document.getElementById('btn')
-// const titleInput = document.getElementById('title')
-// setButton.addEventListener('click', () => {
-//     const title = titleInput.value
-//     window.electronAPI.setTitle(title)
-// })
+
+document.getElementById('open-child-window').addEventListener('click', () => {
+    console.log("-------点击打开about窗口-------");
+    window.electronAPI.openAbout();
+})
 
 const dropZoneLeft = document.getElementById('drop-zone-left')
 // 防止浏览器默认打开文件的行为

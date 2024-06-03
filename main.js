@@ -27,12 +27,13 @@ const createWindow = () => {
         height: 1000
     })
 
-    ipcMain.on('set-title', (event, title) => {
-        const webContents = event.sender
-        const win = BrowserWindow.fromWebContents(webContents)
-            win.setTitle(title)
-        }
-    )
+    ipcMain.on('open-about', (event) => {
+        let childWindow = new BrowserWindow({ width: 400, height: 300, show: false })
+        childWindow.loadFile('./about/about.html');  // 加载子窗口的 HTML 文件
+        childWindow.once('ready-to-show', () => {
+            childWindow.show()  // 当子窗口的内容加载完毕后，显示窗口
+        })
+    })
 
     ipcMain.on('read-file', (event, path, flag) => {
         readFile(path, flag);
